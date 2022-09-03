@@ -1,0 +1,5 @@
+Frequency               RRT of PN               RRT of Schottky
+10 kHz                    25.0us                    04.0us
+100 kHz                   17.5us		    04.0us
+1 MHz                     02.5us		    2.25us
+10 MHz                    00.2us		    -None-

@@ -1,0 +1,33 @@
+1N4007 Diode Recovery Time at 100kHz
+
+* Include diode model files
+.include ../../../models/lab-2/1N4007.txt
+
+* Netlist
+vp 1 0 pulse(-1 1 0ns 1ns 1ns 10us 20us)
+
+* 1N4007
+v1n4007 1 2 dc 0 ac 0
+r1n4007 2 4 100
+d1n4007 4 0 1n4007
+
+* .tran 10ns 5000us 4970us
+.tran 1ns 4991us 4989us
+.control
+run
+
+plot i(v1n4007) 
+plot v(4) 
+
+set color0=white
+set color1=black
+set color2=red
+
+meas tran tstart MIN_AT i(v1n4007)
+meas tran tstop MAX_AT i(v1n4007) from=tstart
+
+print i(v1n4007) > ../results/1n4007-current-100khz
+print v(4) > ../results/1n4007-voltage-100khz
+
+.endc
+.end

@@ -1,0 +1,27 @@
+RF Switch using RN142 junction diodes with Vbias = 0V
+
+* Include model file
+.include ../../../models/lab-3/rn142.txt
+
+* Netlist
+vin 1 0 sin(0 6 10Meg 0 0)
+c1 1 2 100n
+r1 2 0 500
+d 3 2 DRN142S
+vd 4 3 dc 0 ac 0
+r2 4 5 500
+vbias 5 0 dc 0 ac 0
+c2 4 6 100n
+r3 6 0 50
+
+.tran 0.1ns 300ns 100ns
+.control
+run
+
+plot v(1) v(6)
+plot i(vd)
+
+print v(1) v(6) i(vd) > ../results/rn142-rf-0
+
+.endc
+.end

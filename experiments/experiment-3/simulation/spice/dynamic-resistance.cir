@@ -1,0 +1,21 @@
+Find relation between RF resistance and bias current for PIN diode and different frequencies
+
+* Include RN142S diode file
+.include ../../../../models/lab-3/rn142.txt
+
+* Netlist
+vrf 1 0 sin(0 0.125 10Meg)
+vdc 2 1 dc 1 ac 0
+vd 2 3 dc 0 ac 0
+r 3 4 1k
+d 4 0 DRN142S
+
+.tran 5u 4.8u 0.1n
+.control
+run
+
+meas tran vpp PP v(4)
+meas tran ipp PP i(vd)
+
+.endc
+.end

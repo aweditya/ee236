@@ -1,0 +1,12 @@
+Frequency       RRT of PIN
+10 kHz             2 us 
+100 kHz            1 us 
+1 MHz             0.3 us
+10 MHz            -None-
+
+Frequency       RRT of PN
+10 kHz            25.0us                    
+100 kHz           17.5us                    
+1 MHz             02.5us       
+10 MH             00.2us                    
+

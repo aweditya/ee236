@@ -1,0 +1,55 @@
+Diode I-V Characteristic and Band Gap
+
+* Include LED and Diode model files
+.include ../../../models/diodes/Diode_1N914.txt
+.include ../../../models/leds/blue_5mm.txt
+.include ../../../models/leds/green_5mm.txt
+.include ../../../models/leds/red_5mm.txt
+.include ../../../models/leds/white_5mm.txt
+
+* Netlist
+vs 1 0 dc 1 ac 0
+
+vreg 1 2 dc 0 ac 0
+rreg 2 7 100
+dreg 7 0 1n914
+
+vblue 1 3 dc 0 ac 0
+rblue 3 8 100
+dblue 8 0 blue
+
+vgreen 1 4 dc 0 ac 0
+rgreen 4 9 100
+dgreen 9 0 green 
+
+vred 1 5 dc 0 ac 0
+rred 5 10 100
+dred 10 0 red
+
+vwhite 1 6 dc 0 ac 0
+rwhite 6 11 100
+dwhite 11 0 white
+
+.dc vs 0.01 5 0.005
+.control
+run
+
+meas dc reg_start find i(vreg) when v(7)=0.1
+meas dc reg_end find i(vreg) when v(7)=0.7
+
+meas dc blue_start find i(vblue) when v(8)=1.3
+meas dc blue_end find i(vblue) when v(8)=2.6
+
+meas dc green_start find i(vgreen) when v(9)=0.6
+meas dc green_end find i(vgreen) when v(9)=1.8
+
+meas dc red_start find i(vred) when v(10)=1.1
+meas dc red_end find i(vred) when v(10)=1.7
+
+meas dc white_start find i(vwhite) when v(11)=0.7
+meas dc white_end find i(vwhite) when v(11)=2.9
+
+plot ln(i(vreg)) vs v(7), ln(i(vblue)) vs v(8), ln(i(vgreen)) vs v(9), ln(i(vred)) vs v(10), ln(i(vwhite)) vs v(11)
+
+.endc
+.end

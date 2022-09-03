@@ -1,0 +1,32 @@
+Reverse Recovery Time of RN142 at 100kHz
+
+* Include diode model files
+.include ../../../models/lab-3/rn142.txt
+
+* Netlist
+vp 1 0 pulse(-1 1 0ns 0.1ns 0.1ns 0.005ms 0.01ms)
+
+vd 1 2 dc 0 ac 0
+r 2 4 100
+d 4 0 DRN142S
+
+* .tran 1ns 3ms 2.98ms
+.tran 0.1ns 2.9951ms 2.9949ms
+.control
+run
+
+plot v(4)
+plot i(vd)
+
+set color0=white
+set color1=black
+set color2=red
+
+meas tran irr MIN i(vd)
+meas tran tstart MIN_AT i(vd)
+meas tran tstop when i(vd)=par('0.25*irr') rise=1
+
+print v(4) i(vd) > ../results/rn142-rrt-100khz
+
+.endc
+.end

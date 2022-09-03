@@ -1,0 +1,34 @@
+BAT85 Diode Recovery Time at 100kHz
+
+* Include diode model files
+.include ../../../models/lab-2/BAT85.txt
+
+* Netlist
+vp 1 0 pulse(-1 1 0ns 0.1ns 0.1ns 10us 20us)
+
+* BAT85
+vbat85 1 3 dc 0 ac 0
+rbat85 3 5 100
+xbat85 5 0 BAT85
+
+* .tran 10ns 5000us 4970us
+* .tran 1ns 4991us 4989us
+.tran 0.1ns 990.1us 989.9us
+.control
+run
+
+plot i(vbat85)
+plot v(5)
+
+set color0=white
+set color1=black
+set color2=red
+
+meas tran tstart MIN_AT i(vbat85)
+meas tran tstop MAX_AT i(vbat85) from=tstart
+
+print i(vbat85) > ../results/bat85-current-100khz
+print v(5) > ../results/bat85-voltage-100khz
+
+.endc
+.end

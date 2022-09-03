@@ -1,0 +1,17 @@
+Cutoff voltage:
+Vd = 0.7160431
+
+Ideality factor:
+V1 = 0.4V I1 = 9.697171e-07 A
+V2 = 0.7V I2 = 7.095643e-04 A
+\eta = \frac{V_{2} - V_{1}}{V_{T}\ln{I_{2}/I_{1}}} = 1.763
+
+Reverse recovery time at 10kHz:
+tstart = 2.950002e-03
+tstop  = 2.950044e-03
+trr = (tstop - tstart) = 42ns
+
+Reverse recovery time at 100kHz:
+tstart = 2.995002e-03
+tstop  = 2.995044e-03
+trr = (tstop - tstart) = 42ns

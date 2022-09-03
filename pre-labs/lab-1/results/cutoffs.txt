@@ -1,0 +1,5 @@
+cutoff_regular      =  6.039611e-01
+cutoff_blue         =  2.612414e+00
+cutoff_green        =  1.868989e+00
+cutoff_red          =  1.760641e+00
+cutoff_white        =  2.833764e+00

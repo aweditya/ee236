@@ -1,0 +1,15 @@
+PIN diode:
+V_{bias}            I_{d}                 V_{d}             V_{out} (peak-to-peak)
+-5 V               0.00 mA               2.800 V                   0.016 V
+0 V                0.22 mA               2.600 V                   0.330 V
+1 V                0.79 mA               1.860 V                   0.656 V
+3 V                2.29 mA               0.750 V                   1.140 V
+5 V                4.18 mA               0.450 V                   1.300 V
+
+PN diode: 
+V_{bias}            I_{D}                 V_{d}             V_{out} (peak-to-peak)
+-5 V               0.00 mA               2.800 V                   0.080 V
+0 V                0.20 mA               1.700 V                   1.060 V
+1 V                0.48 mA               0.410 V                   1.310 V
+3 V                2.37 mA               0.143 V                   1.420 V
+5 V                4.35 mA               0.100 V                   1.440 V

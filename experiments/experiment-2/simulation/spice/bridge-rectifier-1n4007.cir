@@ -1,0 +1,30 @@
+Bridge Rectifier using 1N4007
+
+* Include the diode model file
+.include ../../../../models/lab-2/1N4007.txt
+
+* AC source: sin(offset amplitude FREQ delay damping-factor)
+vin 1 0 sin(0 5 50 0 0)
+
+* Bridge rectifier
+d1 1 2 1n4007
+d2 3 1 1n4007
+d3 3 0 1n4007
+d4 0 2 1n4007
+rL 2 3 1k
+
+.tran 1us 40ms
+.control
+run
+
+plot v(1) v(2,3)
+plot v(2,3) vs v(1)
+
+set color0=white
+set color1=black
+set color2=red
+
+print v(1) v(2,3) > ../results/voltage-1n4007
+
+.endc
+.end

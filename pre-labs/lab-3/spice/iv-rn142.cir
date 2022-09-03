@@ -1,0 +1,34 @@
+I-V Characteristic of RN142 diode
+
+* Include the model file
+.include ../../../models/lab-3/rn142.txt
+
+* Netlist
+vs 1 0 dc 1 ac 0
+
+vd 1 2 dc 0 ac 0
+r 2 3 100
+d 3 0 DRN142S
+
+.dc vs 0.001 5 0.005
+.control
+run
+
+* Find cutoff voltage
+meas dc cutoff find v(3) when i(vd)=1m
+
+* Find ideality factor
+meas dc start find i(vd) when v(1)=400m
+meas dc stop find i(vd) when v(3)=700m
+
+plot i(vd) vs v(3)
+plot ln(i(vd)) vs v(3)
+
+print i(vd) v(3) > ../results/rn142-iv
+
+set color0=white
+set color1=black
+set color2=read
+
+.endc
+.end

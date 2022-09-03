@@ -1,0 +1,29 @@
+Diode I-V Characteristic
+
+* Include diode model files
+.include models/1n34a.txt
+.include models/1n914.txt
+
+* Netlist
+vs 1 0 dc 1 ac 0
+
+vsi 1 2 dc 0 ac 0
+rsi 2 3 100
+dsi 3 0 1n914
+
+vge 1 4 dc 0 ac 0
+rge 4 5 100
+dge 5 0 1n34a
+
+.dc vs 0 5 0.1 temp 20 80 10
+.control
+run
+meas dc vbi_si find v(3) when i(vsi)=1m 
+meas dc vbr_si find v(3) when i(vsi)=-500u
+
+meas dc vbi_ge find v(5) when i(vge)=1m    
+meas dc vbr_ge find v(5) when i(vge)=-500u
+
+plot i(vsi) vs v(3), i(vge) vs v(4)
+.endc
+.end
