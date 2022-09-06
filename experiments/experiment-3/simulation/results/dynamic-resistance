@@ -1,10 +1,10 @@
 Dynamic resistance measurement
 1 MHz:
-vpp                 =  1.682826e-02
-ipp                 =  2.425810e-04
-rd = vpp / ipp = 69.371715
+vpp                 =  1.591733e-02
+ipp                 =  2.420985e-04
+rd = vpp / ipp = 65.74733011563475
 
 10 MHz
-vpp                 =  2.556798e-02
-ipp                 =  2.359318e-04
-rd = vpp / ipp = 108.370215
+vpp                 =  1.846829e-03
+ipp                 =  2.498537e-04
+rd = vpp / ipp = 7.3916415886576825

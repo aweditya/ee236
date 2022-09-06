@@ -10,7 +10,7 @@ vd 2 3 dc 0 ac 0
 r 3 4 1k
 d 4 0 DRN142S
 
-.tran 5u 4.8u 0.1n
+.tran 0.1n 18.0u 17.0u
 .control
 run
 
