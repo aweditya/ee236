@@ -1,0 +1,36 @@
+I-V Characteristic of Solar Cell for different levels of illumination
+
+* Include model file
+.include ../../../models/lab-4/Solar_Cell.txt
+
+* Netlist
+vs 1 0 dc 1 ac 0
+r 1 2 100
+vd 2 3 dc 0 ac 0
+x 3 0 solar_cell
+
+.dc vs -2 2 0.001
+.control
+run
+
+meas dc isc find i(vd) when v(3)=0
+meas dc voc find v(3) when i(vd)=0
+
+let pd = v(3)*i(vd)
+meas dc pmax max pd
+meas dc imp find i(vd) when p=pd
+meas dc vmp find v(3) when p=pd
+
+let ff = (vmp*imp)/(voc*isc)
+
+plot i(vd) vs v(3), pd vs v(3)
+
+print isc voc pmax imp vmp ff > ../results/data-0e-3
+print i(vd) v(3) > ../results/iv-0e-3
+
+set color0=white
+set color1=black
+set color2=red
+
+.endc
+.end

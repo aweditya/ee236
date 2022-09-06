@@ -1,0 +1,5 @@
+Blue terminal:
+imp = -9.46 mA       vmp = 0.3 V
+
+Green terminal:
+imp = -6.5 mA        vmp = 0.33 V
