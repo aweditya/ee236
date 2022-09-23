@@ -25,8 +25,8 @@ let ff = (vmp*imp)/(voc*isc)
 
 plot i(vd) vs v(3), pd vs v(3)
 
-print isc voc pmax imp vmp ff > ../results/data-0e-3
-print i(vd) v(3) > ../results/iv-0e-3
+print isc voc pmax imp vmp ff 
+print i(vd) v(3) > ../results/iv-10
 
 set color0=white
 set color1=black

@@ -1,0 +1,25 @@
+I-V Characteristic of Solar Cell for different levels of illumination
+
+* Include model file
+.include ../../../models/lab-4/Solar_Cell.txt
+
+* Netlist
+vs 1 0 dc 1 ac 0
+r 1 2 100
+vd 2 3 dc 0 ac 0
+x 3 0 solar_cell
+
+.dc vs -2 2 0.001
+.control
+run
+
+temp 35
+plot i(vd) vs v3
+print i(vd) v(3) > ../results/iv-35
+
+set color0=white
+set color1=black
+set color2=red
+
+.endc
+.end
