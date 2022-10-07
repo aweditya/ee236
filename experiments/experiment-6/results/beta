@@ -1,0 +1,10 @@
+ic = 20.1mA
+ib = 0.1mA
+beta = 201
+
+Operating point
+ic = 4.5mA
+gm = ic/vt = 0.18
+rpi = 36.18
+va = 16
+ro = 800
