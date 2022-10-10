@@ -1,0 +1,68 @@
+PhotoDiode
+
+* Model files
+.include ../models/photo_diode.txt
+.include ../models/ua741.txt
+
+* Power supplies
+vdc 1 0 dc 0v
+vdcp 3 0 dc 12v
+vdcn 4 0 dc -12v
+
+* Circuit connections (set IL_val here)
+Xop 1 2 3 4 2 UA741
+Xs 2 5 photo_diode IL_val=1e-3
+vdc_Xs 5 0 dc 0v
+
+*DC analysis, temperature set, plot and measure
+.control
+set temp=25
+dc vdc -2 2 0.01
+meas dc ir find i(vdc_Xs) when v(1)=-1.5
+meas dc v1 find v(2) when i(vdc_Xs)=1m
+meas dc v2 find v(5) when i(vdc_Xs)=1m
+print v1-v2
+print i(vdc_Xs) v(2,5) > ../results/part1-b-25
+
+set temp=35
+dc vdc -2 2 0.01
+meas dc ir find i(vdc_Xs) when v(1)=-1.5
+meas dc v1 find v(2) when i(vdc_Xs)=1m
+meas dc v2 find v(5) when i(vdc_Xs)=1m
+print v1-v2
+print i(vdc_Xs) v(2,5) > ../results/part1-b-35
+
+set temp=45
+dc vdc -2 2 0.01
+meas dc ir find i(vdc_Xs) when v(1)=-1.5
+meas dc v1 find v(2) when i(vdc_Xs)=1m
+meas dc v2 find v(5) when i(vdc_Xs)=1m
+print v1-v2
+print i(vdc_Xs) v(2,5) > ../results/part1-b-45
+
+set temp=55
+dc vdc -2 2 0.01
+meas dc ir find i(vdc_Xs) when v(1)=-1.5
+meas dc v1 find v(2) when i(vdc_Xs)=1m
+meas dc v2 find v(5) when i(vdc_Xs)=1m
+print v1-v2
+print i(vdc_Xs) v(2,5) > ../results/part1-b-55
+
+set temp=65
+dc vdc -2 2 0.01
+meas dc ir find i(vdc_Xs) when v(1)=-1.5
+meas dc v1 find v(2) when i(vdc_Xs)=1m
+meas dc v2 find v(5) when i(vdc_Xs)=1m
+print v1-v2
+print i(vdc_Xs) v(2,5) > ../results/part1-b-65
+
+set temp=75
+dc vdc -2 2 0.01
+meas dc ir find i(vdc_Xs) when v(1)=-1.5
+meas dc v1 find v(2) when i(vdc_Xs)=1m
+meas dc v2 find v(5) when i(vdc_Xs)=1m
+print v1-v2
+print i(vdc_Xs) v(2,5) > ../results/part1-b-75
+
+.endc
+.end

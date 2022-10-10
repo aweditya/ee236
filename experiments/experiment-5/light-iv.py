@@ -41,3 +41,9 @@ if __name__ == '__main__':
     plt.ylabel(r"$P_{d}$ (mW)")
     plt.legend()
     plt.show()
+
+    print("35C: vl @ pmax = ", vl_35[np.argmax(vl_35 * il_35)], "il @ pmax = ", il_35[np.argmax(vl_35 * il_35)])
+    print("45C: vl @ pmax = ", vl_45[np.argmax(vl_45 * il_45)], "il @ pmax = ", il_45[np.argmax(vl_45 * il_45)])
+    print("55C: vl @ pmax = ", vl_55[np.argmax(vl_55 * il_55)], "il @ pmax = ", il_55[np.argmax(vl_55 * il_55)])
+    print("65C: vl @ pmax = ", vl_65[np.argmax(vl_65 * il_65)], "il @ pmax = ", il_65[np.argmax(vl_65 * il_65)])
+    print("75C: vl @ pmax = ", vl_75[np.argmax(vl_75 * il_75)], "il @ pmax = ", il_75[np.argmax(vl_75 * il_75)])

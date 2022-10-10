@@ -1,0 +1,66 @@
+PhotoDiode
+
+* Model files
+.include ../models/photo_diode.txt
+.include ../models/ua741.txt
+
+* Power supplies
+vdc 1 0 dc 0v
+vdcp 3 0 dc 12v
+vdcn 4 0 dc -12v
+
+* Circuit connections (set IL_val here)
+Xop 1 2 3 4 2 UA741
+
+* 0.5mA Illumination
+Xs1 2 5 photo_diode IL_val=0.5e-3
+vdc_Xs1 5 0 dc 0v
+
+* 1mA Illumination
+Xs2 2 6 photo_diode IL_val=1e-3
+vdc_Xs2 6 0 dc 0v
+
+* 1.5mA Illumination
+Xs3 2 7 photo_diode IL_val=1.5e-3
+vdc_Xs3 7 0 dc 0v
+
+* 2.0mA Illumination
+Xs4 2 8 photo_diode IL_val=2e-3
+vdc_Xs4 8 0 dc 0v
+
+* 2.5mA Illumination
+Xs5 2 9 photo_diode IL_val=2.5e-3
+vdc_Xs5 9 0 dc 0v
+
+* 3.0mA Illumination
+Xs6 2 10 photo_diode IL_val=3e-3
+vdc_Xs6 10 0 dc 0v
+
+
+*DC analysis, temperature set, plot and measure
+.control
+set temp=25
+dc vdc -2 2 0.01
+
+meas dc ir0-5 find i(vdc_Xs1) when v(2)=-1.5
+print i(vdc_Xs1) v(2,5) > ../results/part1-b-0.5
+
+meas dc ir1-0 find i(vdc_Xs2) when v(2)=-1.5
+print i(vdc_Xs2) v(2,6) > ../results/part1-b-1.0
+
+meas dc ir1-5 find i(vdc_Xs3) when v(2)=-1.5
+print i(vdc_Xs3) v(2,7) > ../results/part1-b-1.5
+
+meas dc ir2-0 find i(vdc_Xs4) when v(2)=-1.5
+print i(vdc_Xs4) v(2,8) > ../results/part1-b-2.0
+
+meas dc ir2-5 find i(vdc_Xs5) when v(2)=-1.5
+print i(vdc_Xs5) v(2,9) > ../results/part1-b-2.5
+
+meas dc ir3-0 find i(vdc_Xs6) when v(2)=-1.5
+print i(vdc_Xs6) v(2,10) > ../results/part1-b-3.0
+
+plot i(vdc_Xs1) vs v(2,5), i(vdc_Xs2) vs v(2,6), i(vdc_Xs3) vs v(2,7), i(vdc_Xs4) vs v(2,8), i(vdc_Xs5) vs v(2,9), i(vdc_Xs6) vs v(2,10)
+
+.endc
+.end
