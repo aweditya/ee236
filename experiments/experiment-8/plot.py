@@ -1,6 +1,6 @@
-from cProfile import label
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
 
 if __name__ == '__main__':
     # vsd = 200mV
@@ -96,3 +96,19 @@ if __name__ == '__main__':
     plt.grid(True)
     plt.legend()
     plt.show()
+
+    vsb = np.array([0, 1, 2, 3])
+    vt = np.array([0.68, 0.86, 0.9, 1.1])
+    plt.title(r"$V_{T}$ vs $V_{SB}$")
+    plt.plot(vsb, vt)
+    plt.xlabel(r"$V_{SB}$ (V)")
+    plt.ylabel(r"$V_{T}$ (V)")
+    plt.grid(True)
+    plt.show()
+
+    def f(x, gamma):
+        return 0.68 + gamma*(np.sqrt(0.8 + x) - np.sqrt(0.8))
+
+
+    popt, _ = curve_fit(f, vsb, vt)
+    print(popt[0])
