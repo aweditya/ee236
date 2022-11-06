@@ -1,0 +1,24 @@
+*NMOS Subthreshold slope
+
+.include ../models/2n7000.txt
+
+vgg 1 0 dc 0v
+vdd 2 0 dc 5v
+vbb 3 0 dc 0
+m1 2 1 0 3 2N7000
+
+.dc vgg 0.01 5 0.1 vbb -1.5 0 0.5
+.control
+run
+plot log(abs(i(vdd))) vs v(1)
+
+meas dc i_on find i(vdd) when v(1)=2.5v
+meas dc i_off find i(vdd) when v(1)=0.4v
+meas dc vt find v(1) when i(vdd)=-1e-5
+let abs_val = abs(i(vdd))
+let log_val = abs(abs_val)
+let diff_val = deriv(log_val)
+
+.endc
+.end
+

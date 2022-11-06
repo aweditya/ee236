@@ -1,0 +1,19 @@
+vbs         i_on            i_off           vt (id = 1e-5)             ss
++0.0    1.056316e-01     1.599041e-10        8.502185e-01           0.0409536
+-0.5    9.917317e-02     1.432454e-11        9.354611e-01           0.0392319
+-1.0    9.400043e-02     7.318590e-12        9.925663e-01           0.03731
+-1.5    8.984574e-02     6.824763e-12        1.035448e+00           0.038453
+
+Observation:
+As Vsb becomes increases, the magnitude of on current decreases
+As Vsb becomes increases, the magnitude of off current also decreases
+
+Since static power consumption is proportional to current, increasing
+Vsb is better because it reduces the power consumption in both on and
+off state for the same value of Vgs.
+
+The switching speed has to do with the threshold voltage for turning
+on. Threshold voltage increases with vsb therefore it is better to 
+keep a smaller vsb.
+
+This seems to mean that you cannot increase both at the same time.
